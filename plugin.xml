@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="alipay" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cordova-plugin-alipay</name>
+    <DESCRIPTION>Alipay 阿里支付 支付宝</DESCRIPTION>
+    <js-module name="cordova-plugin-alipay" src="www/cordova-plugin-alipay.js">
+        <clobbers target="cordova.plugins.cordova-plugin-alipay" />
+    </js-module>
+</plugin>
