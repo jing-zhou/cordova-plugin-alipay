@@ -25,13 +25,11 @@
     <description>Cordova Plugin Alipay</description>
     <license>Apache 2.0</license>
     <keywords>cordova,alipay</keywords>
-
-    <engines>
-      <engine name="cordova" version=">=3.5.0"/>
-    </engines>
-
-    <preference name="APP_ID"/>
+    <repo>https://github.com/jing-zhou/cordova-plugin-alipay</repo>
+    <issue>https://github.com/jing-zhou/cordova-plugin-alipay/issues</issue>
     
+    <preference name="APP_ID"/>
+
     <js-module name="alipay" src="www/alipay.js">
       <merges target="Alipay"/>
     </js-module>
