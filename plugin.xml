@@ -26,8 +26,13 @@
     <license>Apache 2.0</license>
     <keywords>cordova,alipay</keywords>
 
+    <engines>
+      <engine name="cordova" version=">=3.5.0"/>
+    </engines>
+
     <preference name="APP_ID"/>
+    
     <js-module name="alipay" src="www/alipay.js">
-        <clobbers target="alipay" />
+      <merges target="Alipay"/>
     </js-module>
 </plugin>
