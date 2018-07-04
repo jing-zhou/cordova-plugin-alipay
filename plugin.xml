@@ -22,7 +22,7 @@
     id="cordova-plugin-alipay" 
     version="0.0.1">
     <name>Alipay</name>
-    <DESCRIPTION>Cordova Plugin Alipay</DESCRIPTION>
+    <description>Cordova Plugin Alipay</description>
     <license>Apache 2.0</license>
     <keywords>cordova,alipay</keywords>
 
