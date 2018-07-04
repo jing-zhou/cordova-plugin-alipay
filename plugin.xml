@@ -26,6 +26,7 @@
     <license>Apache 2.0</license>
     <keywords>cordova,alipay</keywords>
 
+    <preference name="APP_ID"/>
     <js-module name="alipay" src="www/alipay.js">
         <clobbers target="alipay" />
     </js-module>
