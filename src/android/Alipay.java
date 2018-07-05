@@ -20,12 +20,18 @@ import java.util.List;
 import java.util.Map;
 
 public class Alipay extends CordovaPlugin {
-    public static final String RESULT_STATUS = "resultStatus";
-    public static final String RESULT = "result";
-    public static final String MEMO = "memo";
-    private static String TAG = "cordova-alipay-base";
-
-
+    private static final String RESULT_STATUS = "resultStatus";
+    private static final String RESULT = "result";
+    private static final String MEMO = "memo";
+    private static final String TAG = "cordova-alipay";
+    private static final String Execute = "Execute: ";
+    private static final String with = " with: ";
+    private static final String pay = "pay";
+    private static final String unsupported_param = "Unsported parameter:";
+    private static final String unknown_action = "unknown action: ";
+    private static final String callAli = "Calling Alipay with: ";
+    private static final String aliReturn = "Alipay returns:";
+    private static final String maniJson = "Manipulating json";
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
@@ -33,21 +39,18 @@ public class Alipay extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-        Log.d(TAG, "Execute:" + action + " with :" + args.toString());
-        if (action.equals("pay")) {
+        Log.d(TAG, Execute + action + with + args.toString());
+        if (action.equals(pay)) {
             String payParameters = null;
-            if (args.get(0) instanceof JSONObject){
-                JSONObject obj = args.getJSONObject(0);
-                payParameters = buildCallString(obj, callbackContext);
-            }else if (args.get(0) instanceof String){
+            if (args.get(0) instanceof String){
                 payParameters = (String) args.get(0);
             }else{
-                callbackContext.error("Unsported parameter:" + args.get(0));
+                callbackContext.error(unsupported_param + args.get(0));
                 return true;
             }
             doCallPayment(callbackContext, payParameters);
         }else{
-            callbackContext.error("Known service: " + action);
+            callbackContext.error(unknown_action + action);
         }
         return true;
     }
@@ -57,11 +60,11 @@ public class Alipay extends CordovaPlugin {
             @Override
             public void run() {
                 try {
-                    Log.d(TAG, "Calling Alipay with: " + parameters);
+                    Log.d(TAG, callAli + parameters);
                     PayTask task = new PayTask(cordova.getActivity());
                     // 调用支付接口，获取支付结果
                     Map<String, String> rawResult = task.payV2(parameters, true);
-                    Log.d(TAG, "Alipay returns:" + rawResult.toString());
+                    Log.d(TAG, aliReturn + rawResult.toString());
                     final JSONObject result = buildPaymentResult(rawResult);
                     cordova.getActivity().runOnUiThread(new Runnable() {
                         @Override
@@ -71,41 +74,12 @@ public class Alipay extends CordovaPlugin {
                     });
                 }
                 catch (JSONException e){
-                    Log.e(TAG, "Manipulating json", e);
-                    callbackContext.error("Manipulating json");
+                    Log.e(TAG, maniJson, e);
+                    callbackContext.error(maniJson);
                 }
             }
 
         });
-    }
-
-    private String buildCallString(JSONObject args, CallbackContext context) throws JSONException {
-        StringBuffer buf = new StringBuffer();
-        List<String> keys = new ArrayList<String>();
-        Iterator<String> itr = args.keys();
-        while (itr.hasNext()) {
-            String key = itr.next();
-            if (TextUtils.isEmpty(key)) continue;;
-            if ("sign".equals(key)) continue;;
-            keys.add(key);
-        }
-
-        //Let's sort the order info and attach sign to the end
-        Collections.sort(keys);
-        keys.add("sign");
-
-        for (String key : keys){
-            String value = args.getString(key);
-            if (TextUtils.isEmpty(value)){
-                Log.w(TAG, "Empty value for: " + key);
-                continue;
-            }
-            buf.append(key).append('=');
-            buf.append(value);
-            buf.append('&');
-        }
-        if (buf.length() > 0) buf.deleteCharAt(buf.length() - 1);
-        return buf.toString();
     }
 
     private JSONObject buildPaymentResult(Map<String, String> rawResult) throws JSONException {
@@ -115,11 +89,11 @@ public class Alipay extends CordovaPlugin {
         }
 
         for (String key : rawResult.keySet()) {
-            if (TextUtils.equals(key, "resultStatus")) {
+            if (TextUtils.equals(key, RESULT_STATUS)) {
                 result.put(RESULT_STATUS, rawResult.get(key));
-            } else if (TextUtils.equals(key, "result")) {
+            } else if (TextUtils.equals(key, RESULT)) {
                 result.put(RESULT, rawResult.get(key));
-            } else if (TextUtils.equals(key, "memo")) {
+            } else if (TextUtils.equals(key, MEMO)) {
                 result.put(MEMO, rawResult.get(key));
             }
         }
