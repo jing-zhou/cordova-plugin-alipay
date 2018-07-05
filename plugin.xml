@@ -30,7 +30,7 @@
     
     <preference name="APP_ID"/>
 
-    <js-module name="alipay" src="www/alipay.js">
-      <merges target="Alipay"/>
+    <js-module name="Alipay" src="www/alipay.js">
+      <clobbers target="cordova.plugin.Alipay"/>
     </js-module>
 </plugin>
