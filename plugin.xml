@@ -14,7 +14,7 @@
     <preference name="APP_ID"/>
 
     <js-module name="Alipay" src="www/alipay.js">
-      <clobbers target="cordova.plugin.Alipay"/>
+      <clobbers target="Alipay"/>
     </js-module>
 
     <platform name="android">
