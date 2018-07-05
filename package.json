@@ -2,7 +2,6 @@
   "name": "cordova-plugin-alipay",
   "version": "0.0.1",
   "description": "Cordova Plugin Alipay",
-  "types": "./types/index.d.ts",
   "cordova": {
     "id": "cordova-plugin-alipay",
     "platforms": [
