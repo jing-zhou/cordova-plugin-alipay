@@ -13,6 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.Object;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -39,12 +40,12 @@ public class Alipay extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         Log.d(TAG, Execute + action + with + args.toString());
         boolean res = true;
-        
-        if (args.get(0) instanceof String){
-            doCallPayment(callbackContext, (String) args.get(0));
+        Object obj = args.get(0);
+        if (obj != null && obj instanceof String){
+            doCallPayment(callbackContext, (String)obj);
         }else{
             res = false;
-            callbackContext.error(unsupported_param + args.get(0));
+            callbackContext.error(unsupported_param + obj);
             }
                   
         return res;
