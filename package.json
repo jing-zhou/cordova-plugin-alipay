@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-alipay",
-  "version": "0.0.1",
+  "name": "cordova-plugin-gubnoi-alipay",
+  "version": "0.0.2",
   "description": "Cordova Plugin Alipay",
   "cordova": {
-    "id": "cordova-plugin-alipay",
+    "id": "cordova-plugin-gubnoi-alipay",
     "platforms": [
       "android",
       "ios",
@@ -33,11 +33,11 @@
     "test": "npm run eslint",
     "eslint": "node node_modules/eslint/bin/eslint www && node node_modules/eslint/bin/eslint src && node node_modules/eslint/bin/eslint tests"
   },
-  "author": "jing-zhou",
+  "author": "jingzhou",
   "license": "Apache-2.0",
   "engines": {
     "cordovaDependencies": {
-      "0.0.1": { "cordova": ">6.1.0" }
+      ">0.0.1": { "cordova": ">6.1.0" }
     }
   },
   "devDependencies": {
