@@ -26,9 +26,7 @@ public class Alipay extends CordovaPlugin {
     private static final String TAG = "cordova-alipay";
     private static final String Execute = "Execute: ";
     private static final String with = " with: ";
-    private static final String pay = "pay";
     private static final String unsupported_param = "Unsported parameter:";
-    private static final String unknown_action = "unknown action: ";
     private static final String callAli = "Calling Alipay with: ";
     private static final String aliReturn = "Alipay returns:";
     private static final String maniJson = "Manipulating json";
@@ -40,19 +38,16 @@ public class Alipay extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         Log.d(TAG, Execute + action + with + args.toString());
-        if (action.equals(pay)) {
-            String payParameters = null;
-            if (args.get(0) instanceof String){
-                payParameters = (String) args.get(0);
-            }else{
-                callbackContext.error(unsupported_param + args.get(0));
-                return true;
-            }
-            doCallPayment(callbackContext, payParameters);
+        boolean res = true;
+        
+        if (args.get(0) instanceof String){
+            doCallPayment(callbackContext, (String) args.get(0));
         }else{
-            callbackContext.error(unknown_action + action);
-        }
-        return true;
+            res = false;
+            callbackContext.error(unsupported_param + args.get(0));
+            }
+                  
+        return res;
     }
 
     private void doCallPayment(final CallbackContext callbackContext, final String parameters) {
@@ -72,8 +67,7 @@ public class Alipay extends CordovaPlugin {
                             callbackContext.success(result);
                         }
                     });
-                }
-                catch (JSONException e){
+                } catch (JSONException e){
                     Log.e(TAG, maniJson, e);
                     callbackContext.error(maniJson);
                 }
