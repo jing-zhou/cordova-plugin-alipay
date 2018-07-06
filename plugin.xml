@@ -28,7 +28,8 @@
       </config-file>
       
       <source-file src="src/android/Alipay.java" target-dir="src/org/apache/cordova/ali"/>
-      <source-file src="src/android/libs/alipaySdk-20180601.jar" target-dir="libs"/>
+      
+      <lib-file src="src/android/libs/alipaySdk-20180601.jar"/>
 
       <config-file target="AndroidManifest.xml" parent="/manifest/application">
           <activity
