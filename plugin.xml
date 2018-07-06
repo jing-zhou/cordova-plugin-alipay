@@ -11,8 +11,9 @@
     <repo>https://github.com/jing-zhou/cordova-plugin-alipay</repo>
     <issue>https://github.com/jing-zhou/cordova-plugin-alipay/issues</issue>
     
+    <!-- comment out until  <platform name="ios"> is added
     <preference name="APP_ID"/>
-
+    -->
     <js-module name="Alipay" src="www/alipay.js">
       <clobbers target="cordova.plugins.ali"/>
     </js-module>
@@ -30,9 +31,11 @@
       <source-file src="src/android/libs/alipaySdk-20180601.jar" target-dir="libs"/>
 
       <config-file target="AndroidManifest.xml" parent="/manifest/application">
-          <activity android:name="com.alipay.sdk.app.H5PayActivity"
-              android:configChanges="orientation|keyboardHidden|navigation"
-              android:exported="false" android:screenOrientation="behind"
+          <activity
+              android:name="com.alipay.sdk.app.H5PayActivity"
+              android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+              android:exported="false" 
+              android:screenOrientation="behind"
               android:windowSoftInputMode="adjustResize|stateHidden">
           </activity>
       </config-file>
