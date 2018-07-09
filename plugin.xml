@@ -11,9 +11,6 @@
     <repo>https://github.com/jing-zhou/cordova-plugin-alipay</repo>
     <issue>https://github.com/jing-zhou/cordova-plugin-alipay/issues</issue>
     
-    <!-- comment out until  <platform name="ios"> is added
-    <preference name="APP_ID"/>
-    -->
     <js-module name="Alipay" src="www/alipay.js">
       <clobbers target="cordova.plugins.ali"/>
     </js-module>
@@ -49,5 +46,33 @@
           <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
       </config-file>
   
-  </platform>
+    </platform>
+
+    <platform name="ios">
+    
+        <preference name="APP_ID"/>
+
+        <config-file parent="/*" target="config.xml">
+            <feature name="Alipay">
+                <param name="ios-package" value="org.apache.cordova.ali.Alipay"/>
+            </feature>
+            <string name="alipayid">$APP_ID</string>
+        </config-file>
+    
+        <framework src="CoreTelephony.framework" weak="true"/>
+        <framework src="SystemConfiguration.framework" weak="true"/>
+        <framework src="CoreMotion.framework" weak="true"/>
+        <framework src="CFNetwork.framework" weak="true"/>
+        <framework src="libc++.tbd" weak="true"/>
+        <framework src="libz.tbd" weak="true"/>
+        <framework src="CoreText.framework" weak="true"/>
+        <framework src="CoreGraphics.framework" weak="true"/>
+        <framework src="UIKit.framework" weak="true"/>
+        <framework src="QuartzCore.framework" weak="true"/>
+        <framework src="Foundation.framework" weak="true"/>
+
+        <framework src="src/ios/lib/AlipaySDK.framework" custom="true"/>
+        <resource-file src="src/ios/lib/AlipaySDK.bundle"/>
+        <source-file src="src/ios/Alipay.m"/>
+    </platform>
 </plugin>
