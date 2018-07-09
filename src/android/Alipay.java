@@ -85,11 +85,11 @@ public class Alipay extends CordovaPlugin {
 
         for (String key : rawResult.keySet()) {
             if (TextUtils.equals(key, RESULT_STATUS)) {
-                result.put(RESULT_STATUS, rawResult.get(key));
+                result.put(RESULT_STATUS, rawResult.get(RESULT_STATUS));
             } else if (TextUtils.equals(key, RESULT)) {
-                result.put(RESULT, rawResult.get(key));
+                result.put(RESULT, rawResult.get(RESULT));
             } else if (TextUtils.equals(key, MEMO)) {
-                result.put(MEMO, rawResult.get(key));
+                result.put(MEMO, rawResult.get(MEMO));
             }
         }
 
