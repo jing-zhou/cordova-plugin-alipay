@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-gubnoi-alipay",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Cordova Plugin Alipay",
   "cordova": {
     "id": "cordova-plugin-gubnoi-alipay",
