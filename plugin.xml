@@ -3,7 +3,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android"   
     id="cordova-plugin-gubnoi-alipay" 
-    version="0.0.7">
+    version="0.0.8">
     <name>Alipay</name>
     <description>Cordova Plugin Alipay</description>
     <license>Apache 2.0</license>
@@ -28,7 +28,7 @@
       
       <source-file src="src/android/Alipay.java" target-dir="src/org/apache/cordova/ali"/>
       
-      <source-file src="src/android/libs/alipaySdk-20180601.jar" target-dir="libs"/>
+      <lib-file src="src/android/libs/alipaySdk-20180601.jar"/>
 
       <config-file target="AndroidManifest.xml" parent="/manifest/application">
           <activity
