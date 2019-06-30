@@ -12,7 +12,7 @@
     <issue>https://github.com/jing-zhou/cordova-plugin-alipay/issues</issue>
     
     <js-module name="Alipay" src="www/alipay.js">
-      <runs/>
+      <clobbers target="gubnoi.ali" />
     </js-module>
 
     <preference name="APP_ID"/>
