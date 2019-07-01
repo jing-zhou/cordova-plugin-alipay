@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-gubnoi-alipay",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Cordova Plugin Alipay",
   "cordova": {
     "id": "cordova-plugin-gubnoi-alipay",
@@ -21,10 +21,7 @@
     "alipay",
     "ecosystem:cordova",
     "cordova-android",
-    "cordova-ios",
-    "cordova-windows",
-    "cordova-browser",
-    "cordova-osx"
+    "cordova-ios"
   ],
   "scripts": {
     "test": "npm run eslint",
