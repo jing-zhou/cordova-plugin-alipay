@@ -3,7 +3,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android"   
     id="cordova-plugin-gubnoi-alipay" 
-    version="0.0.8">
+    version="0.0.9">
     <name>Alipay</name>
     <description>Cordova Plugin Alipay</description>
     <license>Apache 2.0</license>
@@ -11,8 +11,8 @@
     <repo>https://github.com/jing-zhou/cordova-plugin-alipay</repo>
     <issue>https://github.com/jing-zhou/cordova-plugin-alipay/issues</issue>
     
-    <js-module name="Alipay" src="www/alipay.js">
-      <clobbers target="gubnoi.ali" />
+    <js-module name="alipay" src="www/alipay.js">
+      <clobbers target="plugins.ali" />
     </js-module>
 
     <preference name="APP_ID"/>
@@ -22,7 +22,6 @@
       <config-file target="res/xml/config.xml" parent="/*">
           <feature name="Alipay">
               <param name="android-package" value="org.apache.cordova.ali.Alipay"/>
-              <param name="onload" value="true" />
           </feature>
       </config-file>
       
